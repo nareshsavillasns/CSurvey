@@ -1,0 +1,67 @@
+<div data-ng-controller="SampleSubmissionController" >
+	 
+    <h3><strong>{{'label.sample.submission'|translate}}</strong></h3>
+    <br>
+    <div class="paddedbottom10 margintop10 body">
+    	<select ng-model="district"  ng-options=""  ng-change="districtChange(formData.district)">
+    		<option value="">District</option>
+    	</select>
+    	<select ng-model="block"  ng-options=""  ng-change="">
+    		<option value="">Block</option>
+    	</select>
+    	<select ng-model="interview"  ng-options=""  ng-change="">
+    		<option value="">Interwrr</option>
+    	</select>
+    	<span style ="padding-left: 50px;">
+    	<button  type="submit"  class="btn btn-primary" data-ng-hide="isProcessing" data-ng-click="submit(formData)">
+               {{ 'btn.submit' | translate }}
+       	</button></span>
+	</div>
+    <div class="tabbable">
+			
+		<div class="tab-content">
+			<div class="body">
+              <br/>
+				<table class="table body" style="margin-top: -10px;">
+					<thead>
+						<tr class ="bluebg drakbluebg">
+							<th>{{'table.header.list.block'|translate}}</font></th>
+							<th>{{'table.header.list.intwr'|translate}}</font></th>
+							<th>{{'table.header.list.samplenum'|translate}}</font></th>
+							<th>{{'table.header.list.date'|translate}}</font></th>
+							<th>{{'table.header.list.duration'|translate}}</font></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="pointer-main" data-ng-repeat="sampleSubmissionData in sampleSubmissionDatas  | filter:filterText" >
+							<td>{{sampleSubmissionData.xyz}}</td>
+							<td>{{sampleSubmissionData.xyz}}</td>
+							<td>{{sampleSubmissionData.xyz}}</td>
+							<td>{{sampleSubmissionData.xyz}}</td>
+							<td>{{sampleSubmissionData.xyz}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class="pager">
+					<li class="previous" ng-click="firstPageNo()"><a
+					ng-click="clients.firstPage()" href=""
+					ng-disabled="!clients.hasFirstPage()">First</a></li>
+							
+					<li class="previous" ng-click="previousPageNo()"><a id="prev"
+					ng-click="clients.previous()" href=""
+					ng-disabled="!clients.hasPrevious()">&larr; Prev</a></li>
+							
+					<strong>Page No:&nbsp;&nbsp;{{pageNo}}/{{totalPages}}</strong>
+						
+					<li class="next" ng-click="lastPageNo()"><a
+					ng-click="clients.lastPage(25)" href=""
+					ng-disabled="!clients.hasLastPage()">Last</a></li>
+							
+					<li class="next" ng-click="nextPageNo()"><a id="next"
+					ng-click="clients.next()" href="" ng-disabled="!clients.hasNext()">Next
+					&rarr;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

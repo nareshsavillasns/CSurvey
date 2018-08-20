@@ -1,0 +1,96 @@
+
+<div data-ng-controller="AllSubmissionController">
+
+	<h3>
+		<strong>{{'link.allsubmission'|translate}}</strong>
+	</h3>
+	<div class="pull-left">
+		<span style="padding: 1.5em; font-style: oblique;">
+		<img src="./images/Icons-users.png" alt="TotalClients" width="28px" height="15px" />&nbsp;6&nbsp;Total Count</span>
+		<span style="padding: 1.5em; font-style: oblique; color: #228b22;">
+		<img src="./images/Icons-active.png" alt="NewClients" width="28px" height="15px" />&nbsp;2&nbsp;Completed</span>
+		<span style="padding: 1.5em; font-style: oblique; color: #FFA500;">
+		<img src="./images/Icons-new.png" alt="ActiveClients" width="28px" height="15px" />&nbsp;2&nbsp;Incomplete</span> 
+		<span style="padding: 1.5em; font-style: oblique; color: #FF0000;">
+		<img src="./images/Icons-inactive.png" alt="InActiveClients" width="28px" height="15px" />&nbsp;2&nbsp;Pending</span>
+	</div>
+
+	<div style="width: 980px; overflow: hidden; text-align: justify; margin-bottom: 10px; margin-top: 10px;">
+		<div id="left part" style="float: left; width: 100%; display: inline-block;">
+					<br />
+					<table>
+						<tr>
+								<td><form ng-submit="search(filterText)" style="margin: 4px 0 1%; padding: 100 100px; "><input ng-model="filterText" type="text"
+									style="width: 300px;" placeholder="Filter or Search here"
+									ng-change="focusFunction(filterText)"></form></td>
+								<td><select ng-model="district" style="width: 170px;"
+									 data-ng-options="districtData.id as districtData.name for districtData in districtDatas"
+									ng-change="changeDistrict()">
+										<option value="">---Select District---</option>
+								</select></td>
+								<td><select data-ng-model="mandal"
+									style="width: 170px;"
+									 data-ng-options="mandalData.id as mandalData.name for mandalData in mandalDatas"
+									ng-change="changeMandal()" ng-disabled="!mandalEnable">
+										<option value="">---Select Mandal---</option>
+								</select></td>
+								<td><select ng-model="village" style="width: 170px;"
+								 data-ng-options="villageData.id as villageData.name for villageData in villageDatas"
+									ng-change="changeVillage()"  ng-disabled="!villageEnable">
+										<option value="">---Select Village---</option>
+								</select></td>
+							
+						</tr>
+					</table><br>
+					<table class="table body" style="margin-top: -10px;">
+						<thead>
+							<tr class="bluebg drakbluebg">
+								<th>{{'table.header.allsubmission.district'|translate}}</th>
+								<th>Mandal</th>
+								<th>PSU</th>
+								<th>{{'table.header.allsubmission.ru'|translate}}</th>
+								<th>{{'table.header.allsubmission.intvid'|translate}}</th>
+								<th>{{'table.header.allsubmission.kshh'|translate}}</th>
+								<th>UNI ID</th>
+								<th>{{'label.intdate' | translate}}</th>
+								<th>{{'label.startt' | translate}}</th>
+								<th>End T</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr class="pointer-main" data-ng-repeat="allSubmissionData in allSubmissionDatas  | filter:filterText" >
+								<td>{{allSubmissionData.district}}</td>
+								<td>{{allSubmissionData.mandal}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+								<td>{{allSubmissionData.xyz}}</td>
+							</tr>
+						</tbody>
+						</table>
+
+					<ul class="pager">
+						<li class="previous" ng-click="firstPageNo()">
+						   <a ng-click="clients.firstPage()" href="" ng-disabled="!clients.hasFirstPage()">First</a>
+						</li>
+						<li class="previous" ng-click="previousPageNo()">
+						   <a id="prev" ng-click="clients.previous()" href="" ng-disabled="!clients.hasPrevious()">&larr; Prev</a>
+						</li>
+						<!-- <strong>Page No:&nbsp;&nbsp;{{pageNo}}/{{totalPages}}</strong> -->
+						<strong>Page No:&nbsp;&nbsp;1/1</strong>
+						<li class="next" ng-click="lastPageNo()">
+						   <a ng-click="clients.lastPage(25)" href="" ng-disabled="!clients.hasLastPage()">Last</a>
+						</li>
+						<li class="next" ng-click="nextPageNo()">
+						   <a id="next" ng-click="clients.next()" href="" ng-disabled="!clients.hasNext()">Next &rarr;</a>
+						</li>
+					</ul>
+				
+		</div>
+	</div>
+</div>
